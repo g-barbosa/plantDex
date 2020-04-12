@@ -1,0 +1,26 @@
+{
+  "name": "plantadex",
+  "version": "1.0.0",
+  "description": "API para catáogo de plantas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --ext js,graphql"
+  },
+  "author": "Giovanne Brito Barbosa",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.11.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "cloudinary": "^1.21.0",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.0.0",
+    "graphql-import": "^1.0.1",
+    "jwt-simple": "^0.5.6",
+    "knex": "^0.20.13",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

@@ -1,0 +1,21 @@
+type User {
+    id: Int
+    login: String
+    password: String
+    token: String
+}
+
+input RegisterUserInput {
+    login: String!
+    password: String!
+}
+
+input LoginUserInput {
+    login: String!
+    password: String!
+}
+
+input UserFilter {
+    id: Int
+    login: String
+}

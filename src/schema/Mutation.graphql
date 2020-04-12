@@ -1,0 +1,30 @@
+type Mutation {
+
+    # User Mutations
+    registerUser(
+        data: RegisterUserInput!
+    ): User!
+
+    deleteUser(
+        filter: UserFilter!
+    ): User
+
+    updateUser(
+        filter: UserFilter!
+        dados: RegisterUserInput!
+    ): User
+
+    # Plant Mutations
+    registerPlant(
+        data: RegisterPlantInput!
+    ): Plant!
+
+    deletePlant(
+        filtro: PlantFilter!
+    ): Plant
+
+    updatePlant(
+        filtro: PlantFilter!
+        dados: RegisterPlantInput!
+    ): Plant
+}

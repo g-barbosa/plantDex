@@ -1,0 +1,22 @@
+type Plant {
+    id: Int
+    name: String
+    scientificName: String
+    informations: String
+    image: String
+    user_id: Int
+}
+
+input RegisterPlantInput {
+    name: String!
+    scientificName: String
+    informations: String
+    image: String
+    user_id: Int
+}
+
+input PlantFilter {
+    id: Int
+    name: String
+    user_id: Int
+}
