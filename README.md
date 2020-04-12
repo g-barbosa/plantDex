@@ -2,7 +2,7 @@
 
 this project is a simple API to catalog my garden plants
 
-## Dependências
+## Dependencies
 For the project to run in its environment, it is necessary to install all dependencies, using one of these commands:
 ~~~
 npm install
