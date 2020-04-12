@@ -7,7 +7,7 @@ For the project to run in its environment, it is necessary to install all depend
 ~~~
 npm install
 ~~~
-ou
+or
 ~~~
 yarn
 ~~~
