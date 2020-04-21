@@ -11,7 +11,7 @@ module.exports = async ({req}) => {
             let content = jwt.decode(auth, process.env.APP_AUTH_SECRET)
             user = content
         }catch(e){
-            throw new Error
+            throw new Error("Tivemos um erro interno")
         }
     }
     const err = new Error('acesso negado')
