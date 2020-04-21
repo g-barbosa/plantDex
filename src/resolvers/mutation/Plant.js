@@ -20,4 +20,11 @@ module.exports = {
             user_id: data.user_id
         }
     },
+    async deletePlant(_, {filter}, ctx) {
+        ctx.validateUser()
+        const { user } = ctx
+        response = await connection('plants').where({user_id: user.id, id: filter.id}).del()
+
+        return response == 0 ? "Não foi possível excluir este item" : "Planta excluida com sucesso"
+    }
 }
