@@ -7,11 +7,11 @@ type Mutation {
 
     deleteUser(
         filter: UserFilter!
-    ): User
+    ): String
 
     updateUser(
         filter: UserFilter!
-        dados: RegisterUserInput!
+        data: RegisterUserInput!
     ): User
 
     # Plant Mutations
@@ -20,11 +20,11 @@ type Mutation {
     ): Plant!
 
     deletePlant(
-        filtro: PlantFilter!
-    ): Plant
+        filter: PlantFilter!
+    ): String
 
     updatePlant(
-        filtro: PlantFilter!
-        dados: RegisterPlantInput!
+        filter: PlantFilter!
+        data: RegisterPlantInput!
     ): Plant
 }
