@@ -18,7 +18,8 @@
     "graphql-import": "^1.0.1",
     "jwt-simple": "^0.5.6",
     "knex": "^0.20.13",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "pg": "^8.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
