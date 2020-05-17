@@ -7,12 +7,17 @@ module.exports = {
 
         data.password = bcrypt.hashSync(data.password, salt)
 
+        const verifyUser = await connection('users').where({login: data.login})
+
+        if (verifyUser.length != 0){
+            throw new Error('Já existe um usuário com este login')
+        }
+
         const response = await connection('users').insert(data)
 
         return {
             id: response[0],
             login: data.login,
-            password: data.password
         } 
     },
 

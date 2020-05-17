@@ -3,6 +3,7 @@ type Plant {
     name: String
     scientificName: String
     informations: String
+    types: [Boolean]
     image: String
     user_id: Int
 }

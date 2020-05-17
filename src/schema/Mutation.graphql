@@ -17,6 +17,7 @@ type Mutation {
     # Plant Mutations
     registerPlant(
         data: RegisterPlantInput!
+        types: [Boolean]
     ): Plant!
 
     deletePlant(

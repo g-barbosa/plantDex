@@ -2,7 +2,7 @@ const connection = require('../../config/connection')
 const cloudinary = require('../../utils/cloudinary')
 
 module.exports = {
-    async registerPlant(_, {data}, ctx) {
+    async registerPlant(_, {data, types}, ctx) {
         ctx.validateUser()
         const { user } = ctx
         data.user_id = user.id
@@ -10,6 +10,13 @@ module.exports = {
         data.image = await cloudinary.upload(data.image)
 
         const response = await connection('plants').insert(data)
+        await connection('plantTypes').insert({
+            tree: types[0],
+            cactus: types[1],
+            flower: types[2],
+            leaf: types[3],
+            plant_id: response[0]
+        })
 
         return {
             id: response[0],
