@@ -1,5 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server')
 const { importSchema } = require('graphql-import')
+require('dotenv').config()
 
 const context = require('./src/config/context')
 
@@ -13,6 +14,6 @@ const server = new ApolloServer({
     context
 })
 
-server.listen().then(({ url }) => {
+server.listen({port: process.env.PORT || 4000}).then(({ url }) => {
     console.log(`Executando em ${url}`)
 })
