@@ -1,6 +1,19 @@
 # PlantDex API
 
-this project is a simple API to catalog my garden plants
+This project is an API for a kind of "Pokedex" for plants. The user can register his plants and make his own personal catalog.
+
+# Progress
+
+- [:heavy_check_mark:] Create User
+- [:heavy_check_mark:] Add Plant
+- [:heavy_check_mark:] List Plants
+- [:heavy_check_mark:] Get Plant By Id
+- [:x:] Edit Plant
+- [:heavy_check_mark:] JWT
+- [:heavy_check_mark:] Validate User
+- [:heavy_check_mark:] Database
+- [:x:] Change Password
+- [:x:] UUID
 
 ## Dependencies
 For the project to run in its environment, it is necessary to install all dependencies, using one of these commands:
