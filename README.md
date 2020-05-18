@@ -1,5 +1,5 @@
 ![alt_text](https://res.cloudinary.com/dkafjz7rw/image/upload/v1589768224/LogoPlanta-03_1_mtssou.png)
-# PlantDex API 
+# PlantaDex API 
 
 This project is an API for a kind of "Pokedex" for plants. The user can register his plants and make his own personal catalog.
 
