@@ -13,7 +13,7 @@ cloudinary.config({
             .then( result => {
                 return `${result.public_id}.${result.format}`
             })
-            .catch( error => {throw new Error(error)})
+            .catch( error => {console.log(error);throw new Error(error)})
 
         return imageUploaded 
       },
