@@ -7,14 +7,24 @@ module.exports = {
         ctx.validateUser()
         const { user } = ctx
         const plants = await connection('plants').where({user_id: user.id})
-        var plantsResponse = []
-
         for (i = 0; i < plants.length; i++) {
             if (plants[i].image !== null || plants[i].image !== "")
                 plants[i].image = await cloudinary.get(plants[i].image)
             
             const types =  await connection('plantTypes').where({plant_id: plants[i].id})
-            plants[i].types = types.length === 0 ? [false,false,false,false] : [types[0].tree, types[0].cactus, types[0].flower, types[0].leaf]
+
+            if (types.length !== 0) {
+                newTypes = []
+                types[0].tree ? newTypes.push('Árvore') : newTypes = newTypes
+                types[0].cactus ? newTypes.push('Cacto') : newTypes = newTypes
+                types[0].flower ? newTypes.push('Flor') : newTypes = newTypes
+                types[0].leaf ? newTypes.push('Folha') : newTypes = newTypes
+
+                plants[i].types = newTypes
+
+            } else {
+                plants[i].types = types
+            }
         }
         return plants
     },

@@ -6,6 +6,7 @@ module.exports = {
         ctx.validateUser()
         const { user } = ctx
         data.user_id = user.id
+        console.log(types)
 
         data.image = await cloudinary.upload(data.image)
 
