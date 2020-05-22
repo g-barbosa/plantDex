@@ -11,14 +11,14 @@ module.exports = {
         data.image = await cloudinary.upload(data.image)
 
         const response = await connection('plants').insert(data)
-        const plantTypes = await connection('plantTypes').insert({
+        const plantTypes = await connection('planttypes').insert({
             tree: types[0],
             cactus: types[1],
             flower: types[2],
             leaf: types[3],
             plant_id: response[0]
         })
-        
+        console.log('response: ', response)
         console.log('types do register: ', plantTypes)
 
         return {
