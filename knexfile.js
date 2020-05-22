@@ -7,7 +7,8 @@ module.exports = {
     port: process.env.APP_DB_PORT,
     database: process.env.APP_DB_NAME,
     user:     process.env.APP_DB_USER,
-    password: process.env.APP_DB_PASSWORD
+    password: process.env.APP_DB_PASSWORD,
+    ssl: false
   },
   pool: {
     min: 2,
