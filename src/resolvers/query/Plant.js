@@ -12,7 +12,7 @@ module.exports = {
                 plants[i].image = await cloudinary.get(plants[i].image)
             
             const types =  await connection('plantTypes').where({plant_id: plants[i].id})
-
+            console.log(types)
             if (types.length !== 0) {
                 newTypes = []
                 types[0].tree ? newTypes.push('Árvore') : newTypes = newTypes
@@ -26,6 +26,7 @@ module.exports = {
                 plants[i].types = types
             }
         }
+        console.log(plants)
         return plants
     },
 
