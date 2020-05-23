@@ -6,13 +6,11 @@ module.exports = {
         ctx.validateUser()
         const { user } = ctx
         data.user_id = user.id
-        console.log('registrando: ', types)
 
         data.image = await cloudinary.upload(data.image)
 
         const response = await connection('plants').returning('id').insert(data)
         .then(async (res) => {
-            console.log('>>>>>>>>>: ', res)
             await connection('plantTypes').returning('id').insert({
             tree: types[0],
             cactus: types[1],
