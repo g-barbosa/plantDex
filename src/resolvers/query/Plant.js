@@ -10,8 +10,8 @@ module.exports = {
         for (i = 0; i < plants.length; i++) {
             if (plants[i].image !== null || plants[i].image !== "")
                 plants[i].image = await cloudinary.get(plants[i].image)
-            
-            const types =  await connection('plantTypes').where({plant_id: plants[i].id})
+            console.log('id da planta: ', plants[i].id)
+            const types =  await connection('plantTypes').where('plant_id', plants[i].id)
             console.log('types do get:', types)
             if (types.length !== 0) {
                 newTypes = []
