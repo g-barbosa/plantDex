@@ -10,7 +10,7 @@ module.exports = {
 
         data.image = await cloudinary.upload(data.image)
 
-        const response = await connection('plants').insert(data)
+        const response = await connection('plants').returning('id').insert(data)
         .then(async (res) => {
             console.log('>>>>>>>>>: ', res)
             await connection('plantTypes').returning('id').insert({
