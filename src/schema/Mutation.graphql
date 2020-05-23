@@ -18,7 +18,7 @@ type Mutation {
     registerPlant(
         data: RegisterPlantInput!
         types: [Boolean]
-    ): Plant!
+    ): String!
 
     deletePlant(
         filter: PlantFilter!

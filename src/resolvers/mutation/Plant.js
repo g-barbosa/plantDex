@@ -11,24 +11,16 @@ module.exports = {
         data.image = await cloudinary.upload(data.image)
 
         const response = await connection('plants').insert(data)
-        const plantTypes = await connection('planttypes').insert({
+        .then(async (res) => await connection('plantTypes').insert({
             tree: types[0],
             cactus: types[1],
             flower: types[2],
             leaf: types[3],
-            plant_id: response[0]
-        })
-        console.log('response: ', response)
-        console.log('types do register: ', plantTypes)
-
-        return {
-            id: response[0],
-            name: data.name,
-            scientificName: data.scientificName,
-            informations: data.informations,
-            image: data.image,
-            user_id: data.user_id
-        }
+            plant_id: res[0]
+        }))
+        .then((res) => res)
+        console.log(response)
+        return 'Planta Registrada com sucesso'
     },
     async deletePlant(_, {filter}, ctx) {
         ctx.validateUser()
