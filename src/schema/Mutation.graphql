@@ -17,7 +17,7 @@ type Mutation {
     # Plant Mutations
     registerPlant(
         data: RegisterPlantInput!
-        types: [Boolean]
+        types: [Boolean]!
     ): String!
 
     deletePlant(
@@ -25,7 +25,8 @@ type Mutation {
     ): String
 
     updatePlant(
-        filter: PlantFilter!
+        id: Int!
         data: RegisterPlantInput!
-    ): Plant
+        types: [Boolean]!
+    ): String!
 }

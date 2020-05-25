@@ -16,6 +16,14 @@ This project is an API for a kind of "Pokedex" for plants. The user can register
 - [:x:] Change Password
 - [:x:] UUID
 
+## To Contribute
+* Fork this repository
+* Clone this repository
+* Create a new branch from dev (feature/yourBranchName or fix/yourBranchName)
+* Make your changes and commit
+* Push your changes to GitHub
+* Open a pull request
+
 ## Dependencies
 For the project to run in its environment, it is necessary to install all dependencies, using one of these commands:
 ~~~
