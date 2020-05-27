@@ -9,7 +9,7 @@ module.exports = {
 
         data.image = await cloudinary.upload(data.image)
 
-        const response = await connection('plants').returning('id').insert(data)
+        await connection('plants').returning('id').insert(data)
         .then(async (res) => {
             await connection('plantTypes').returning('id').insert({
             tree: types[0],
@@ -32,10 +32,13 @@ module.exports = {
 
     async updatePlant(_, {id, data, types}, ctx) {
         ctx.validateUser()
-        const { user } = ctx
 
-        const response = await connection('plants').returning('id').update(data).where('id', filter.id)
-        .then(res => {
+        if (!data.image.includes('http')){
+            data.image = await cloudinary.upload(data.image)
+        }
+
+        await connection('plants').returning('id').update(data).where('id', id)
+        .then(async (res) => {
             await connection('plantTypes').returning('id').update({
                 tree: types[0],
                 cactus: types[1],
