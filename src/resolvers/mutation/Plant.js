@@ -22,10 +22,11 @@ module.exports = {
         .then((res) => res)
         return 'Planta Registrada com sucesso'
     },
-    async deletePlant(_, {filter}, ctx) {
+    async deletePlant(_, {id}, ctx) {
         ctx.validateUser()
         const { user } = ctx
-        response = await connection('plants').where({user_id: user.id, id: filter.id}).del()
+        await connection('plantTypes').where({plant_id: id}).del()
+        response = await connection('plants').where({user_id: user.id, id: id}).del()
 
         return response == 0 ? "Não foi possível excluir este item" : "Planta excluida com sucesso"
     },
