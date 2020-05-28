@@ -9,7 +9,7 @@ This project is an API for a kind of "Pokedex" for plants. The user can register
 - [:heavy_check_mark:] Add Plant
 - [:heavy_check_mark:] List Plants
 - [:heavy_check_mark:] Get Plant By Id
-- [:x:] Edit Plant
+- [:heavy_check_mark:] Edit Plant
 - [:heavy_check_mark:] JWT
 - [:heavy_check_mark:] Validate User
 - [:heavy_check_mark:] Database
