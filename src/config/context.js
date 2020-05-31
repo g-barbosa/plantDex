@@ -17,19 +17,9 @@ module.exports = async ({req}) => {
     const err = new Error('acesso negado')
     return {
         user,
-        validateUser(){
+        validateUser(id){
             if(!user) throw err
+            if(user.id !== id) throw err
         },
-        validatePlantFilter(filter){
-
-            if(!user) throw err
-            if(!filter) throw err
-
-            const {id, name, userId} = filter
-
-            if(!id && !name) throw err
-            if(id && userId !== user.id) throw err
-            if(name && userId != user.email) throw err
-        }
     }
 }

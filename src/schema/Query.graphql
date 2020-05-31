@@ -1,6 +1,4 @@
 type Query {
     login(data: LoginUserInput!): User
-    user(filter: UserFilter): User
-    plants: [Plant]
-    plant(filter: PlantFilter!): Plant
+    plants(id: Int!): [Plant]
 }

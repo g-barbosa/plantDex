@@ -21,13 +21,39 @@ module.exports = {
         } 
     },
 
-    async deleteUser(_, {data}, ctx) {
-        ctx.validateUser()
+    async deleteUser(_, {id, password}, ctx) {
+        ctx.validateUser(id)
         const {user} = ctx
+
+        const pass = bcrypt.compareSync(password, user.password)
+
+        if (!pass)
+        throw new Error("Esta senha não é válida")        
 
         await connection('plants').where({user_id: user.id}).del()
         response = await connection('users').where({id: user.id}).del()
 
         return response == 0 ? "Não foi possível excluir usuário" : "Usuário excluido com sucesso"
+    },
+
+    async changePassword(_, {id, password, newPassword}, ctx) {
+        ctx.validateUser(id)
+
+        const user = await connection('users').where({id: id}).first()
+
+        if (!user)
+        throw new Error("Não foi possível encontrar este usuário")
+
+        const pass = bcrypt.compareSync(password, user.password)
+
+        if (!pass)
+        throw new Error("Esta senha não é válida")
+
+        const salt = bcrypt.genSaltSync()
+        newPassword = bcrypt.hashSync(newPassword, salt)
+
+        const response = await connection('users').returning('id').update({password: newPassword}).where('id', id)
+
+        return response == 0 ? "Não foi possível alterar sua senha" : "Senha alterada com sucesso"
     }
 }

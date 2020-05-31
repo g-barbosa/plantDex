@@ -6,13 +6,15 @@ type Mutation {
     ): User!
 
     deleteUser(
-        filter: UserFilter!
+        id: Int!,
+        password: String!
     ): String
 
-    updateUser(
-        filter: UserFilter!
-        data: RegisterUserInput!
-    ): User
+    changePassword(
+        id: Int!
+        password: String!
+        newPassword: String!
+    ): String!
 
     # Plant Mutations
     registerPlant(
@@ -22,6 +24,7 @@ type Mutation {
 
     deletePlant(
         id: Int!
+        user_id: Int!
     ): String
 
     updatePlant(

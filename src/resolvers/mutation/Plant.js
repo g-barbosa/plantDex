@@ -3,7 +3,7 @@ const cloudinary = require('../../utils/cloudinary')
 
 module.exports = {
     async registerPlant(_, {data, types}, ctx) {
-        ctx.validateUser()
+        ctx.validateUser(data.user_id)
         const { user } = ctx
         data.user_id = user.id
 
@@ -22,8 +22,9 @@ module.exports = {
         .then((res) => res)
         return 'Planta Registrada com sucesso'
     },
-    async deletePlant(_, {id}, ctx) {
-        ctx.validateUser()
+    async deletePlant(_, {id, user_id}, ctx) {
+        ctx.validateUser(user_id)
+        
         const { user } = ctx
         await connection('plantTypes').where({plant_id: id}).del()
         response = await connection('plants').where({user_id: user.id, id: id}).del()
@@ -32,7 +33,7 @@ module.exports = {
     },
 
     async updatePlant(_, {id, data, types}, ctx) {
-        ctx.validateUser()
+        ctx.validateUser(data.user_id)
 
         if (!data.image.includes('http')){
             data.image = await cloudinary.upload(data.image)
