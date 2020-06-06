@@ -19,7 +19,7 @@ cloudinary.config({
       },
 
       get(img) {
-          const image = cloudinary.url(img)
+          const image = cloudinary.url(img, {secure: true})
           return image
       }
   }
