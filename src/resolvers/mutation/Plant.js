@@ -22,8 +22,12 @@ module.exports = {
         })
         })
         .then((res) => res)
+
+        await trx.commit()
+
         return 'Planta Registrada com sucesso'
     },
+
     async deletePlant(_, {id, user_id}, ctx) {
         ctx.validateUser(user_id)
         
@@ -33,6 +37,8 @@ module.exports = {
 
         await trx('plantTypes').where({plant_id: id}).del()
         response = await trx('plants').where({user_id: user.id, id: id}).del()
+
+        await trx.commit()
 
         return response == 0 ? "Não foi possível excluir este item" : "Planta excluida com sucesso"
     },
@@ -57,6 +63,8 @@ module.exports = {
             }).where('plant_id', id)
         })
         .then(res => res)
+
+        await trx.commit()
 
         return 'Planta salva com sucesso!'
     }
