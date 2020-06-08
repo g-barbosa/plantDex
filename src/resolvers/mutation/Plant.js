@@ -9,9 +9,11 @@ module.exports = {
 
         data.image = await cloudinary.upload(data.image)
 
-        await connection('plants').returning('id').insert(data)
+        const trx = await connection.transaction();
+
+        await trx('plants').returning('id').insert(data)
         .then(async (res) => {
-            await connection('plantTypes').returning('id').insert({
+            await trx('plantTypes').returning('id').insert({
             tree: types[0],
             cactus: types[1],
             flower: types[2],
@@ -26,8 +28,11 @@ module.exports = {
         ctx.validateUser(user_id)
         
         const { user } = ctx
-        await connection('plantTypes').where({plant_id: id}).del()
-        response = await connection('plants').where({user_id: user.id, id: id}).del()
+
+        const trx = await connection.transaction();
+
+        await trx('plantTypes').where({plant_id: id}).del()
+        response = await trx('plants').where({user_id: user.id, id: id}).del()
 
         return response == 0 ? "Não foi possível excluir este item" : "Planta excluida com sucesso"
     },
@@ -35,13 +40,15 @@ module.exports = {
     async updatePlant(_, {id, data, types}, ctx) {
         ctx.validateUser(data.user_id)
 
+        const trx = await connection.transaction();
+
         if (!data.image.includes('http')){
             data.image = await cloudinary.upload(data.image)
         }
 
-        await connection('plants').returning('id').update(data).where('id', id)
+        await trx('plants').returning('id').update(data).where('id', id)
         .then(async (res) => {
-            await connection('plantTypes').returning('id').update({
+            await trx('plantTypes').returning('id').update({
                 tree: types[0],
                 cactus: types[1],
                 flower: types[2],
